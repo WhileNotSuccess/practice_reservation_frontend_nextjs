@@ -1,0 +1,74 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "조은식당",
+      "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
+      "content": "<p>정말 맛있어요!</p>"
+    },
+    {
+      "id": 2,
+      "name": "부산 까치놀",
+      "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
+      "content": "<p>맛이 이상해요</p>"
+    },
+    {
+      "id": 3,
+      "name": "청춘식당",
+      "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
+      "content": "<p>으악</p>"
+    }
+  ],
+  "reservations": [
+    {
+      "restaurantId": 1,
+      "date": "2024-06-08",
+      "userId": 1,
+      "userName": "문성윤"
+    },
+    {
+      "restaurantId": 1,
+      "date": "2024-06-09",
+      "userId": 2,
+      "userName": "최현서"
+    },
+    {
+      "restaurantId": 2,
+      "date": "2024-06-08",
+      "userId": 3,
+      "userName": "권기현"
+    },
+    {
+      "restaurantId": 3,
+      "date": "2024-06-08",
+      "userId": 4,
+      "userName": "이한"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "문성윤",
+      "googleId": "516548123154",
+      "phone": "010-7553-4001"
+    },
+    {
+      "id": 2,
+      "name": "최현서",
+      "googleId": "51654812315",
+      "phone": "010-4357-7272"
+    },
+    {
+      "id": 3,
+      "name": "권기현",
+      "googleId": "516548123156",
+      "phone": "010-8890-6505"
+    },
+    {
+      "id": 4,
+      "name": "이한",
+      "googleId": "516548123157",
+      "phone": "010-4620-9769"
+    }
+  ]
+}
