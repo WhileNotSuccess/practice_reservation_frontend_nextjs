@@ -1,71 +1,81 @@
 {
-  "restaurants": [
+  "restaurant": [
     {
-      "id": 1,
+      "id": "1",
       "name": "조은식당",
       "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
       "content": "<p>정말 맛있어요!</p>"
     },
     {
-      "id": 2,
-      "name": "부산 까치놀",
+      "id": "2",
+      "name": "조은식당2222222",
       "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
-      "content": "<p>맛이 이상해요</p>"
+      "content": "<p>정말 맛있어요!</p>"
     },
     {
-      "id": 3,
-      "name": "청춘식당",
+      "id": "3",
+      "name": "조은식당333333",
       "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
-      "content": "<p>으악</p>"
+      "content": "<p>정말 맛있어요!</p>"
+    },
+    {
+      "id": "4",
+      "name": "조은식당444444",
+      "thumbnail": "https://www.awss3bucket/whgdmstlrekd",
+      "content": "<p>정말 맛있어요!</p>"
     }
   ],
-  "reservations": [
+  "reservation": [
     {
       "restaurantId": 1,
       "date": "2024-06-08",
       "userId": 1,
-      "userName": "문성윤"
+      "userName": "문성윤",
+      "id": "c1a6"
     },
     {
       "restaurantId": 1,
       "date": "2024-06-09",
       "userId": 2,
-      "userName": "최현서"
+      "userName": "최현서",
+      "id": "b43b"
     },
     {
       "restaurantId": 2,
       "date": "2024-06-08",
       "userId": 3,
-      "userName": "권기현"
+      "userName": "권기현",
+      "id": "ec91"
     },
     {
       "restaurantId": 3,
       "date": "2024-06-08",
       "userId": 4,
-      "userName": "이한"
+      "userName": "이한",
+      "id": "6b00"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "문성윤",
       "googleId": "516548123154",
       "phone": "010-7553-4001"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "최현서",
       "googleId": "51654812315",
       "phone": "010-4357-7272"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "권기현",
       "googleId": "516548123156",
       "phone": "010-8890-6505"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "이한",
       "googleId": "516548123157",
       "phone": "010-4620-9769"

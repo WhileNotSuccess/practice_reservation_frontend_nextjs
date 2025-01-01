@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RestaurantList from "./restaurantItem";
 
 interface Restaurant {
+  id : number;
   name: string;
   content: string;
   thumbnail : string

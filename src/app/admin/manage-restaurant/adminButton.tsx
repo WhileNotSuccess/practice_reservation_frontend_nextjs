@@ -1,25 +1,13 @@
-'use client'
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function AdminButton() {
-  const id = 1;
-  const a = useRouter()
+interface AdminButtonProps{
+  id : number;
+  onDelete : (id:number)=>void;
+}
 
-  const onDelete = async(id : number)=>{
-    await fetch(`http://localhost:3001/restaurant/${id}`,{
-      method:'DELETE',
-      headers :{
-        'Content-Type' : 'application/json'
-      }
-    })
-    .then(res=>{
-      console.log(res, "삭제성공했어요")
-    }).catch(e=>{
-      console.log(e, "삭제 실패했어요")
-    })
-  }
+export default function AdminButton({id, onDelete}:AdminButtonProps) {
 
   return (
     <div className="w-full h-[7%] flex content-center gap-2 mb-4 border border-black">

@@ -17,7 +17,7 @@ export default function Reservation() {
 
   const onReservation = async(id : string, date : Date)=>{
     const formmatDate = date.toISOString().slice(0,10)
-    await fetch(`http://localhost:3001/restaurant/reservation/${id}`,{ 
+    await fetch(`http://localhost:3009/restaurant/reservation/${id}`,{ 
       method : 'POST',
       headers : {"Content-Type" : "application/json"},
       body : JSON.stringify({date : formmatDate})

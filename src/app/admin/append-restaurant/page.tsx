@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 
-export default function RestaurantPage() {
+export default function RestaurantPage() { // 임시로 만든 페이지라 현서가 만든 페이지로 교체하면 됨
   const user : string = "admin"
   const router = useRouter()
 
