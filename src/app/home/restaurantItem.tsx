@@ -20,7 +20,7 @@ const RestaurantList: React.FC<RestaurantListProps> = ({user}) => {
     const [restaurantList, setRestaurantList] = useState<Restaurant[]>([]);
     const [pageTogle, setPageTogle] = useState(true)
   
-    useEffect(() => { // admin/manage-restaurant/page.tsx와 같이 사용하는 식당불러오는 함수라 다른파일에 빼는 방법?
+    useEffect(() => { 
       const fetchRestaurants = async () => {
         try {
           const response = await fetch("http://localhost:3009/restaurant", { 

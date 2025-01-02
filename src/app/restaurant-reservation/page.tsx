@@ -16,13 +16,27 @@ export default function Reservation() {
   }
 
   const onReservation = async(id : string, date : Date)=>{
-    const formmatDate = date.toISOString().slice(0,10)
+    const formmatDate = date.toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month : "2-digit",
+      day : "2-digit"
+    })
+
+    const [year, month, day] = formmatDate
+    .replace(/\./g, "")
+    .trim()
+    .split(" ")
+
+    const isoFormattedDate = `${year}-${month}-${day}`
+    console.log(isoFormattedDate)
+
+
     await fetch(`http://localhost:3009/restaurant/reservation/${id}`,{ 
       method : 'POST',
       headers : {"Content-Type" : "application/json"},
-      body : JSON.stringify({date : formmatDate})
+      body : JSON.stringify({date : isoFormattedDate})
     }).then(()=>{
-      alert(`${formmatDate}에 예약성공했습니다`)
+      alert(`${isoFormattedDate}에 예약성공했습니다`)
     }).catch(e=>{
       console.log(e, "예약실패했어요")
     })
@@ -32,7 +46,7 @@ export default function Reservation() {
 <div>
   식당예약페이지
  <div>
-  <Calander onChange={onDateChange} value={date}/>
+  <Calander onChange={onDateChange} value={date} locale="ko-KR"/>
  </div>
  <button className="border border-black" onClick={()=>onReservation(id, date)}>예약하기</button>
 </div>

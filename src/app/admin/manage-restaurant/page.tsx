@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from "react";
 // import AdminButton from "../manage-restaurant/adminButton";
 import RestaurantList from "../../home/restaurantItem";
