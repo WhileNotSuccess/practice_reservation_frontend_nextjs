@@ -1,15 +1,13 @@
 'use client'
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import router from "next/router";
+import { use, useState } from "react";
 import Calander from "react-calendar"
 import "react-calendar/dist/Calendar.css";
 
-export default function Reservation() {
+export default function Reservation({params} : {params : Promise<{id : string}>} ) {
   const [date, setDate] = useState<Date>(new Date())
-  const a = useSearchParams()
-  //const id = a.get("id")
-  const id = "1" // 변경 필수
+  const {id} = use(params)
 
   const onDateChange = (e : any)=>{
     setDate(e)
@@ -37,6 +35,7 @@ export default function Reservation() {
       body : JSON.stringify({date : isoFormattedDate})
     }).then(()=>{
       alert(`${isoFormattedDate}에 예약성공했습니다`)
+      router.push('/home')
     }).catch(e=>{
       console.log(e, "예약실패했어요")
     })
