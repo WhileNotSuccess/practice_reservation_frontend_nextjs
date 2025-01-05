@@ -3,7 +3,7 @@
 import { use, useEffect } from "react";
 
 
-export default function RestaurantPage({params} : {params : Promise<{id : string}>}) { // 임시로 만든 페이지라 현서가 만든 페이지로 교체하면 됨
+export default function RestaurantPage({params} : {params : Promise<{id : number}>}) { // 임시로 만든 페이지라 현서가 만든 페이지로 교체하면 됨
   const user : string = "admin"
   const {id} = use(params)
   useEffect(()=>{

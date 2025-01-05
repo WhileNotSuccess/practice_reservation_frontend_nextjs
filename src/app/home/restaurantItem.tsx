@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser"
 import AdminButton from "../admin/manage-restaurant/adminButton";
+import Link from "next/link";
 
 
 interface Restaurant {
@@ -12,14 +13,39 @@ interface Restaurant {
   thumbnail : string
 }
 
-interface RestaurantListProps {
-  user: string; 
+interface User {
+  id : number;
+  name : string;
+  googleId : string;
+  phone : string
 }
 
-const RestaurantList: React.FC<RestaurantListProps> = ({user}) => {
+const RestaurantList: React.FC = () => {
     const [restaurantList, setRestaurantList] = useState<Restaurant[]>([]);
     const [pageTogle, setPageTogle] = useState(true)
-  
+    const [user, setUser] = useState<User | null>(null)
+    const test = { // 유저정보 하드코딩용
+      id : 2
+    }
+
+
+/*     useEffect(()=>{
+      const fetchUser = async()=>{
+        try{
+          const response = await fetch("http://localhost:3009/user/info",{
+            method: "GET",
+            headers: {"Content-Type" : "application/json"}
+          })
+          const data : User = await response.json()
+          setUser(data)
+        }
+        catch(error){
+          console.error("유저정보를 가져올수 없어요", error)
+        }
+      }
+      fetchUser()
+    },[]) */
+
     useEffect(() => { 
       const fetchRestaurants = async () => {
         try {
@@ -57,12 +83,12 @@ const RestaurantList: React.FC<RestaurantListProps> = ({user}) => {
   
   return (
     <>
-    {restaurantList.map((restaurant, index) => (
+    {restaurantList.map((restaurant, index) => ( // 67번째줄 변수명 변경
       <div key={index} className="border border-black w-[40%] h-[60%] flex flex-col justify-between p-4">
-        {user === "admin" && <AdminButton id={restaurant.id} onDelete={onDelete}/>}
+        {test.id === 1 && <AdminButton id={restaurant.id} onDelete={onDelete}/>} 
         <img src={restaurant.thumbnail} className="w-[100%] h-[80%]"></img>
        <h2>{parse(restaurant.content)}</h2>
-       <h2 className="text-md font-semibold w-[100%]">{restaurant.name}</h2>
+       <Link className="text-md font-semibold w-[100%]" href={`restaurant/${restaurant.id}`}>{restaurant.name}</Link>
       </div>
     ))}
     </>
