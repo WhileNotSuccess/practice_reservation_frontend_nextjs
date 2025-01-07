@@ -2,23 +2,23 @@
 
 import React, { useEffect, useState } from "react";
 import parse from "html-react-parser"
-import AdminButton from "../admin/manage-restaurant/adminButton";
+import AdminButton from "./adminButton";
 import Link from "next/link";
-import {User, Restaurant} from '../common/types'
-import fetchRestaurantList from "../hooks/fetchRestaurantList";
+import {User, Restaurant} from '../../common/types'
+import fetchRestaurantList from "../../hooks/fetchRestaurantList";
 
 
-const RestaurantList: React.FC = () => {
+const AdminRestaurantList: React.FC = () => {
     const [pageToggle, setPageToggle] = useState(true)
     const [user, setUser] = useState<User | null>(null)
-    const {restaurantList, setRestaurantList} = fetchRestaurantList(pageToggle)
+    const {restaurantList, setRestaurantList} = fetchRestaurantList(pageToggle) // 커스텀훅 : 전체식당 리스트
 
     const test = { // 유저정보 하드코딩용
       id : 2
     }
 
 
-/*     useEffect(()=>{ // 유저정보를 불러오는 함수
+/*     useEffect(()=>{
       const fetchUser = async()=>{
         try{
           const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/info`,{
@@ -40,6 +40,7 @@ const RestaurantList: React.FC = () => {
     <>
     {restaurantList.map((restaurant, index) => ( // 43번째줄 변수명 변경
       <article key={index} className="border border-black w-[40%] h-[60%] flex flex-col justify-between p-4">
+        <AdminButton id={restaurant.id} setPageToggle={setPageToggle}/>
         <figure className="w-[100%] h-[80%]">
         <img src={restaurant.thumbnail} ></img>
        <h2>{parse(restaurant.content)}</h2>
@@ -51,4 +52,4 @@ const RestaurantList: React.FC = () => {
   );
 };
 
-export default RestaurantList;
+export default AdminRestaurantList;

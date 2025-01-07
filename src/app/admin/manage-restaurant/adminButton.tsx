@@ -1,19 +1,38 @@
 
+import { Restaurant } from "@/app/common/types";
 import Link from "next/link";
+import React from "react";
 
 interface AdminButtonProps{
   id : number;
-  onDelete : (id:number)=>void;
+  setPageToggle : React.Dispatch<React.SetStateAction<boolean>> // useState를 보내줄때 사용하는 타입
 }
 
-export default function AdminButton({id, onDelete}:AdminButtonProps) {
+export default function AdminButton({id,setPageToggle}:AdminButtonProps) {
+
+  const onDelete = async(id : number)=>{ // 관리자가 식당을 삭제하는 함수
+    try{
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/restaurant/${id}`,{
+        method:'DELETE',
+        headers :{
+          'Content-Type' : 'application/json'
+        }
+      })
+      setPageToggle(prev => !prev)
+      console.log(response, "삭제성공했어요")
+    }
+    catch(error){
+      alert("식당을 삭제하지 못했어요")
+      console.error(error, "삭제실패했어요")
+    }
+  }
 
   return (
-    <div className="w-full h-[7%] flex content-center gap-2 mb-4 border border-black">
+    <section className="w-full h-[7%] flex content-center gap-2 mb-4 border border-black">
       <Link href={`/admin/update-restaurant/${id}`} className="border border-black">수정</Link>
       <button className="border border-black" onClick={()=>{onDelete(id)}}>삭제</button>
       <Link href={`/admin/restaurant-reservation/${id}`} className="border border-black">예약확인</Link>
-    </div>
+    </section>
   );
 }
 

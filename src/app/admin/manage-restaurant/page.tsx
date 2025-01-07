@@ -1,23 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
-import RestaurantList from "../../home/restaurantItem";
+import AdminRestaurantList from "./restaurantManagementItem";
 import Link from "next/link";
 import router from "next/router";
+import {User} from "../../common/types"
 
-interface Restaurant {
-  id : number;
-  name: string;
-  content: string;
-  thumbnail : string
-}
-
-interface User {
-  id : number;
-  name : string;
-  googleId : string;
-  phone : string
-}
 
 const Restaurant: React.FC = () => {
   const [user, setUser] = useState<User | null>(null)
@@ -28,7 +16,7 @@ const Restaurant: React.FC = () => {
 /*     useEffect(()=>{
       const fetchUser = async()=>{
         try{
-          const response = await fetch("http://localhost:3009/user/info",{
+          const response = await fetch("${process.env.NEXT_PUBLIC_BACKEND_URL}/user/info",{
             method: "GET",
             headers: {"Content-Type" : "application/json"}
           })
@@ -43,13 +31,13 @@ const Restaurant: React.FC = () => {
     },[]) */
 
   return (
-    <div className="h-screen w-screen flex justify-evenly flex-wrap gap-5 mt-[4%]">
-      <div className="w-[100%] ml-10 ">
-      {test.id === 1 && <Link href={"/admin/append-restaurant"}>추가</Link>}
-      </div>
+    <main className="h-screen w-screen flex justify-evenly flex-wrap gap-5 mt-[4%]">
+      <nav className="w-[100%] ml-10 ">
+      <Link href={"/admin/append-restaurant"}>추가</Link>
+      </nav>
       
-      <RestaurantList/>
-    </div>
+      <AdminRestaurantList/>
+    </main>
   );
 };
 
