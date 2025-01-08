@@ -11,12 +11,12 @@ const fetchRestaurantList = (pageToggle : boolean)=>{ // 전체식당을 불러�
       useEffect(() => { 
         const fetchRestaurants = async () => {
           try {
-            const response = await customFetch('/restaurant', { 
-              method: "GET",
-            });
-            const data: Restaurant[] = await response.json();
+            const data: Restaurant[] = await customFetch('/restaurant', {
+              method : "GET"
+            })
             setRestaurantList(data);
           } catch (error) {
+            alert("식당정보를 가져올수 없어요")
             console.error("식당을 가져올 수 없어요:", error);
           }
         };

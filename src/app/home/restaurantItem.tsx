@@ -1,44 +1,20 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import parse from "html-react-parser"
-import AdminButton from "../admin/manage-restaurant/adminButton";
 import Link from "next/link";
-import {User, Restaurant} from '../common/types'
 import fetchRestaurantList from "../hooks/fetchRestaurantList";
+import fetchUserInfo from "../hooks/fetchUserInfo";
 
 
 const RestaurantList: React.FC = () => {
     const [pageToggle, setPageToggle] = useState(true)
-    const [user, setUser] = useState<User | null>(null)
+    const {user, setUser} = fetchUserInfo()
     const {restaurantList, setRestaurantList} = fetchRestaurantList(pageToggle)
-
-    const test = { // 유저정보 하드코딩용
-      id : 2
-    }
-
-
-/*     useEffect(()=>{ // 유저정보를 불러오는 함수
-      const fetchUser = async()=>{
-        try{
-          const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/info`,{
-            method: "GET",
-            headers: {"Content-Type" : "application/json"}
-          })
-          const data : User = await response.json()
-          setUser(data)
-        }
-        catch(error){
-          console.error("유저정보를 가져올수 없어요", error)
-        }
-      }
-      fetchUser()
-    },[]) */
-
   
   return (
     <>
-    {restaurantList.map((restaurant, index) => ( // 43번째줄 변수명 변경
+    {restaurantList.map((restaurant, index) => (
       <article key={index} className="border border-black w-[40%] h-[60%] flex flex-col justify-between p-4">
         <figure className="w-[100%] h-[80%]">
         <img src={restaurant.thumbnail} ></img>

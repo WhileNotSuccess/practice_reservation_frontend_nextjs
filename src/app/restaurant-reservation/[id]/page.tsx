@@ -36,11 +36,11 @@ export default function Reservation({params} : {params : Promise<{id : string}>}
   const onReservation = async(id : string, date : Date)=>{ // 해당날짜에 예약하는 함수
     const isoFormattedDate = dateChange(date)
     try{
-      await customFetch(`restaurant/reservation/${id}`,{
+      await customFetch(`/restaurant/reservation/${id}`,{ // db.json에서는 reservation/${id}로 요청을 보내야 해서 확인불가
         method : 'POST',
         body : JSON.stringify({date: isoFormattedDate})
       })
-/*     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/restaurant/reservation/${id}`,{ 
+/*     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/restaurant/reservation/${id}`,{ // 혹시몰라서 넘겨둔 더미코드
       method : 'POST',
       headers : {"Content-Type" : "application/json"},
       body : JSON.stringify({date : isoFormattedDate})

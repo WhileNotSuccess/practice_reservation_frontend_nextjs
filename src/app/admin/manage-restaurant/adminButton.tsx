@@ -1,5 +1,5 @@
 
-import { Restaurant } from "@/app/common/types";
+import useCustomFetch from "@/app/lib/customFetch";
 import Link from "next/link";
 import React from "react";
 
@@ -9,17 +9,15 @@ interface AdminButtonProps{
 }
 
 export default function AdminButton({id,setPageToggle}:AdminButtonProps) {
+  const customFetch = useCustomFetch()
 
   const onDelete = async(id : number)=>{ // 관리자가 식당을 삭제하는 함수
     try{
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/restaurant/${id}`,{
+      const data = await customFetch(`/restaurant/${id}`,{
         method:'DELETE',
-        headers :{
-          'Content-Type' : 'application/json'
-        }
       })
       setPageToggle(prev => !prev)
-      console.log(response, "삭제성공했어요")
+      console.log(data, "삭제성공했어요")
     }
     catch(error){
       alert("식당을 삭제하지 못했어요")
